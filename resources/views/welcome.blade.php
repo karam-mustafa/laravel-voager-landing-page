@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="{{setting('site.direction')}}">
 <head>
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
@@ -17,13 +17,31 @@
     <!-- Core theme CSS (includes Bootstrap)-->
     <link href="{{asset('css/styles.css')}}" rel="stylesheet"/>
     <link href="{{asset('css/customize.css')}}" rel="stylesheet"/>
+    <style>
+        *{
+
+        }
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6,
+        p{
+            text-align: @php setting('site.direction') == 'ltr' ? 'left' : 'right'  @endphp !important;
+        }
+    </style>
 </head>
 <body id="page-top">
 <!-- Navigation-->
 <nav class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top" id="mainNav">
     <div class="container">
         <a class="navbar-brand js-scroll-trigger" href="#page-top">
-            <img class="logo" src="{{Voyager::image(setting('site.logo'))}}">
+            @if(Voyager::image(setting('site.logo')) == null)
+                <h4>{{myTrans('site_logo')}}</h4>
+            @else
+                <img class="logo" src="{{Voyager::image(setting('site.logo'))}}">
+            @endif
         </a>
         <button
             class="navbar-toggler navbar-toggler-right text-uppercase font-weight-bold bg-primary text-white rounded"
@@ -34,6 +52,13 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
+                @foreach(getLinkedSections($sections) as $section)
+                    <li class="nav-item mx-0 mx-lg-1">
+                        <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#{{$section->title}}">
+                            {{$section->title}}
+                        </a>
+                    </li>
+                @endforeach
                 <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger"
                                                      href="#portfolio">Portfolio</a></li>
                 <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger"
@@ -62,7 +87,10 @@
     </div>
 </header>
 
-
+@foreach(getVisibleSections($sections) as $section)
+    @php $component = resolveViewTypeForComponent($section->view_type); @endphp
+    @component($component , ['section' =>$section])@endcomponent
+@endforeach
 <!-- Portfolio Section-->
 <section class="page-section portfolio" id="portfolio">
     <div class="container">
