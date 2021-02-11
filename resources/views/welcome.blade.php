@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
     <meta name="description" content=""/>
     <meta name="author" content=""/>
-    <title>Freelancer - Start Bootstrap Theme</title>
+    <title>{{setting('site.title')}}</title>
     <!-- Favicon-->
     <link rel="icon" type="image/x-icon" href="{{asset('assets/img/favicon.ico')}}"/>
     <!-- Font Awesome icons (free version)-->
@@ -16,12 +16,15 @@
           type="text/css"/>
     <!-- Core theme CSS (includes Bootstrap)-->
     <link href="{{asset('css/styles.css')}}" rel="stylesheet"/>
+    <link href="{{asset('css/customize.css')}}" rel="stylesheet"/>
 </head>
 <body id="page-top">
 <!-- Navigation-->
 <nav class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top" id="mainNav">
     <div class="container">
-        <a class="navbar-brand js-scroll-trigger" href="#page-top">Start Bootstrap</a>
+        <a class="navbar-brand js-scroll-trigger" href="#page-top">
+            <img class="logo" src="{{Voyager::image(setting('site.logo'))}}">
+        </a>
         <button
             class="navbar-toggler navbar-toggler-right text-uppercase font-weight-bold bg-primary text-white rounded"
             type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive"
