@@ -2,3 +2,9 @@
     max-width: 60px;
     max-height: 100px;
 }
+.simple-text-d{
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
