@@ -1,4 +1,6 @@
-<section class="page-section portfolio" id="{{$section->title}}">
+<section class="page-section portfolio"
+         style="background-color: {{$section->background_color}} !important;"
+         id="{{$section->title}}">
     <div class="container">
         <!-- Portfolio Section Heading-->
         <h2

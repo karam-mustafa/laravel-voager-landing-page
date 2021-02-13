@@ -12,4 +12,7 @@ class Section extends Model
     public function simpleTexts(){
         return $this->hasMany(SimpleText::class);
     }
+    public function modalCards(){
+        return $this->hasMany(ModalCard::class);
+    }
 }

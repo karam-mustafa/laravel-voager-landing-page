@@ -83,7 +83,7 @@ function getAvailableViewsType()
     return [
         "1" =>"simple text",
         "2" => "text cards",
-        "3" => "gallery cards"
+        "3" => "modal cards"
     ];
 }
 
