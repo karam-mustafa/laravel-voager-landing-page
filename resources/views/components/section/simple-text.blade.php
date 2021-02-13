@@ -16,9 +16,9 @@
         </div>
         <!-- Portfolio Grid Items-->
         <div class="row justify-content-center">
-            @foreach($section->simpleTexts as $item)
-                <div class="simple-text-d">
-                    <p style="color: {{$item->text}}">{{$item->text}}</p>
+            @foreach(checkIfTableOrdered($section->simpleTexts) as $item)
+                <div class="simple-text-d {{getViewTypeForText($item)}}">
+                    <p style="color: {{$item->text_color}}">{{$item->text}}</p>
                 </div>
             @endforeach
         </div>

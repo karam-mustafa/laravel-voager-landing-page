@@ -50,6 +50,30 @@ function getVisibleSections($sections)
 }
 
 /**
+ * check if this model is has attribute order then order this model by it.
+ *
+ * @param  \Illuminate\Database\Eloquent\Model $model
+ *
+ * @return \Illuminate\Support\Collection|\Illuminate\Database\Eloquent\Model
+ */
+function checkIfTableOrdered($model)
+{
+    return isset($model[0]['order']) ? collect($model)->sortBy('order') : $model;
+}
+
+/**
+ * check if this view type half or full column
+ *
+ * @param  \Illuminate\Database\Eloquent\Model $model
+ *
+ * @return string
+ */
+function getViewTypeForText($model)
+{
+    return $model->view_type == 'half' ? "col-lg-6 col-md-6 col-sm-12" : "col-lg-12 col-md-12 col-sm-12";
+}
+
+/**
  * get the available view type for now.
  *
  * @return array
